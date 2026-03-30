@@ -49,3 +49,22 @@ ORDER BY purchase_amount DESC
 LIMIT 5
 """
 print(pd.read_sql(query4, conn))
+
+import matplotlib.pyplot as plt
+
+# Visualization: Revenue by Region
+df_region = pd.read_sql(query2, conn)
+
+df_region.plot(kind="bar", x="region", y="revenue")
+plt.title("Revenue by Region")
+plt.ylabel("Revenue")
+plt.show()
+
+
+# Visualization: Avg Purchase by Category
+df_category = pd.read_sql(query3, conn)
+
+df_category.plot(kind="bar", x="product_category", y="avg_purchase")
+plt.title("Average Purchase by Category")
+plt.ylabel("Avg Purchase")
+plt.show()
